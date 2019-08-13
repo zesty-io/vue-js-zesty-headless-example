@@ -1,3 +1,5 @@
+<img src="https://user-images.githubusercontent.com/729972/62969841-fef0a680-bdc2-11e9-9084-35a1f5a63564.png" width="100%">
+
 # Vue.js  Web App Example using Zesty.io for Headless Content
 
 Popular Javascript Framework Vue.js in use with Zesty.io Headlessly
