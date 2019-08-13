@@ -1,0 +1,58 @@
+<html>
+    <head>
+        <title>My App</title>
+    </head>
+    <body>
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
+        
+        <h1>Hello World</h1>
+        
+        <div id="zestyApp">
+            <div class="columns">
+                <div class="column">
+                    <h2 class="title">{{ message }}</h2>
+                    <h4 class="subtitle">{{ subtitle }}</h4>
+                </div>
+                <div class="column">
+                    <img :src="image" width="400">
+                    <button @click="hello()" class="button">Click Me</button>
+                    <button @click="randomImage()" class="button">Random Image</button>
+                </div>
+            </div>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <script>
+            var app = new Vue({
+                el: '#zestyApp',
+                data: {
+                    message: 'Hello Vue!',
+                    subtitle: 'hey all there is more pizza',
+                    image: "https://placeimg.com/640/480/any"
+                },
+                methods: {
+                    hello: function () {
+                        var endpoint = "https://h60nts24-dev.preview.zestyio.com/-/instant/7-e2cd9ffb9b-grzvkk.json"
+                        var vm = this
+                        fetch(endpoint).then(json => json.json()).then(json => {
+                            vm.message = json.data[0].content.message
+                            vm.subtitle = json.data[0].content.subtitle
+                            vm.image = json.data[0].content.image.data[0].url
+                        })
+
+                        this.subtitle = 'Pizza is running out omg!'
+                        setTimeout(function(){
+                            this.subtitle = 'not its not, lawls!!!'
+                        }.bind(this), 3000)
+                    },
+                    randomImage: function() {
+                        this.image = "https://placeimg.com/640/480/any"
+                    }
+                },
+                created: function() {
+                    this.hello()
+                } 
+            })
+        </script>
+    </body>
+</html>
