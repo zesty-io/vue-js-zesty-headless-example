@@ -2,9 +2,11 @@
 
 # Vue.js  Web App Example using Zesty.io for Headless Content
 
-Popular Javascript Framework Vue.js in use with Zesty.io Headlessly
+Use the Popular Javascript Framework Vue.js to build a Web App that has content powered headlessly with Zesty.io
 
-This example is from our Zesty.io Meeting in San Diego
+Walk through tutorial on Google Slides Presentation https://docs.google.com/presentation/d/1CIwCTWGqaqCa4KWFToCfL3pJnNmyTJkPhhQCD3V5kCY/edit#slide=id.g5f7be7ab7a_0_79
+
+This example was build durning our Zesty.io Meetup in San Diego on August 12th, 2019
 
 ## Resources Used
 
