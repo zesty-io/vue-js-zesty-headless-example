@@ -12,6 +12,16 @@
                 <div class="column">
                     <h2 class="title">{{ message }}</h2>
                     <h4 class="subtitle">{{ subtitle }}</h4>
+                    <button @click="getPopStars()">Populate the Starz</button>
+                    <ul v-if="popstars.length > 0">
+                        <li v-for="popstar in popstars"  v-bind:key="popstar.meta.zuid">
+                            <h2>{{popstar.content.name}}</h2>
+                            {{popstar.meta.type}}
+                            <img :src="popstar.content.photo.data[0].url" width="400">
+                            <hr>
+                        </li>
+                    </ul>
+                    
                 </div>
                 <div class="column">
                     <img :src="image" width="400">
@@ -28,7 +38,8 @@
                 data: {
                     message: 'Hello Vue!',
                     subtitle: 'hey all there is more pizza',
-                    image: "https://placeimg.com/640/480/any"
+                    image: "https://placeimg.com/640/480/any",
+                    popstars: []
                 },
                 methods: {
                     hello: function () {
@@ -44,6 +55,13 @@
                         setTimeout(function(){
                             this.subtitle = 'not its not, lawls!!!'
                         }.bind(this), 3000)
+                    },
+                    getPopStars: function(){
+                        var endpoint = "https://h60nts24-dev.preview.zestyio.com/-/instant/6-98b2b08bdb-84gl5s.json"
+                        
+                        fetch(endpoint).then(json => json.json()).then(json => {
+                            this.popstars = json.data
+                        })
                     },
                     randomImage: function() {
                         this.image = "https://placeimg.com/640/480/any"
